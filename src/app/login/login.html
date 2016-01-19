@@ -1,0 +1,48 @@
+<main class="md-padding" layout="row" layout-align="center center">
+
+					<md-whiteframe class="md-whiteframe-z1" layout="column" style="width:320px" layout-padding>
+						<md-content >
+							<form name="loginForm" ng-submit="vm.login(loginForm)" novalidate>
+								
+								<div ng-messages="loginForm" class="md-block md-warn" role="alert">
+	        						  	
+	        						  	<div ng-message="$submitted" style="margin-bottom:30px;text-align:center;color: rgb(221,44,0);" ng-if="vm.status.loginSucceeded == false">	        						  		
+	        						  		Invalid username and password
+	        						  	</div>
+
+	        						  	<div ng-message="$submitted" style="margin-bottom:30px;text-align:center;color: rgb(221,44,0);" ng-if="vm.status == 'connection_error'">	        						  		
+	        						  		Connection error
+	        						  	</div>
+	        					</div>						
+
+								<md-input-container class="md-block">
+									<label>Username</label>
+									<input required name="username" ng-model="vm.user.username">
+
+									<div ng-messages="loginForm.username.$error">
+	        						  	<div ng-message="required">This is required.</div>
+	        						</div>
+
+								</md-input-container>
+								<md-input-container class="md-block">
+									<label>Password</label>
+									<input name="password" required ng-model="vm.user.password" type="password">
+
+									<div ng-messages="loginForm.password.$error">
+	        						  	<div ng-message="required">This is required.</div>
+	        						</div>
+
+								</md-input-container>
+								<md-input-container layout-align="center center" class="md-block">
+									<div layout="row" layout-sm="column" layout-margin>
+										<md-button type="submit" class="md-raised" flex="100">Login</md-button>
+										</md-button>
+									</div>
+
+
+								</md-input-container>
+							</form>
+						</md-content>
+					</md-whiteframe>
+
+</main>

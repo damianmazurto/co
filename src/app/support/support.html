@@ -1,0 +1,47 @@
+<md-dialog aria-label="Support" layout="column" ng-cloak class="md-inline-form" flex="60" flex-xs="30">
+  <md-dialog-content layout="column">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Support</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon class="material-icons close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+      
+    <md-content layout-padding layout="column">
+   
+            
+            <form name="supportForm" class="md-inline-form">
+               
+                <md-input-container class="md-block">
+                  <label>Subject</label>
+                  <input ng-model="support.subject">
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                   <label>Details</label>
+                   <textarea ng-model="support.details" columns="1" md-maxlength="150" rows="5"></textarea>
+                </md-input-container>
+             
+            </form>
+            
+
+    </md-content>
+  
+    <md-content layout="column" layout-align="end end">
+    <md-dialog-actions >
+      <span flex ></span>
+      <md-button ng-click="cancel()">
+        Close
+      </md-button>
+      <md-button ng-click="send($event)" style="margin-right:20px;" >
+        Send
+      </md-button>
+    </md-dialog-actions>
+    </md-content>
+
+
+  </md-dialog-content>
+</md-dialog>

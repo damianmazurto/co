@@ -1,0 +1,54 @@
+
+   <main class="md-padding" >
+        
+        <div style="margin-top:45px;text-align:center">
+          <md-button ng-click="main.add('salesmandata')">Sales man data</md-button>
+          <md-button ng-click="main.add('lastyeardata')">Last year data</md-button>
+          <md-button ng-click="main.add('topsalesorders')">Top sales orders</md-button>
+          <md-button ng-click="main.add('topsalesmen')">Top sales men</md-button>
+        </div>
+    
+    
+      <ul gridster="main.gridsterOpts" id="gridster" style="padding-left:0px;margin-top:20px">
+          <li  style="background-color: #EEEEEE" gridster-item="main.customItemMap" ng-repeat="item in main.customItems">
+
+<div layout="column" layout-fill style="position:relative">
+                <md-toolbar>
+                  <div class="md-toolbar-tools">
+                    <h2>{{item.type}}</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="main.add(item.type)">
+                      <md-icon class="material-icons refresh" aria-label="Refresh chart"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-click="main.remove(item.type)">
+                      <md-icon class="material-icons close" aria-label="Close chart"></md-icon>
+                    </md-button>
+                  </div>
+                </md-toolbar>
+
+            
+             <div layout="row" layout-margin layout-align="center" flex>
+
+                <canvas ng-if="item.chart=='pie'" id="pie" class="chart chart-pie"
+                    chart-data="item.data" chart-labels="item.labels" chart-options="main.options">
+                </canvas> 
+
+                <canvas ng-if="item.chart=='bar'" id="bar" class="chart chart-bar"
+                    chart-data="item.data" chart-labels="item.labels" chart-options="main.options" chart-series="item.series">
+                </canvas> 
+
+                <table ng-if="item.type=='topsalesmen'">
+                  <tr ng-repeat="tr in item.data"><td>{{tr[0]}}</td><td>{{tr[1]}}</td></tr>
+                </table>
+
+                <table ng-if="item.type=='topsalesorders'">
+                  <tr ng-repeat="tr in item.data"><td>{{tr.userName}}</td><td>{{tr.qty}}</td><td>{{tr.value}}</td></tr>
+                </table>
+            </div>
+          </div>
+
+          </li>
+      </ul>
+    
+
+   </main>
